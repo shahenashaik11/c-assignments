@@ -1,0 +1,120 @@
+using System;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] CourseName = new string[3];
+            int[] DurationOfCourse = new int[3];
+            int[] NoOfEnquries = new int[3];
+            string[] StudentName = new string[3];
+            int[] studentid = new int[3];
+            int[] StudentCost = new int[3];
+            int i = 0, TotalCost = 0,  StudentIdTemp = 0, size = 0;
+            int[] CourseId = new int[3];
+           
+            DateTime[] DateOfJoining = new DateTime[3];
+            int[] CourseFees = new int[3];
+
+            Console.WriteLine("Enter only 3 courses");
+            for (i=0;i<3;i++)
+            {
+                Console.WriteLine("Enter "+(i+1)+" courses details");
+                Console.WriteLine("Enter Course Name");
+                CourseName[i] = Console.ReadLine();
+
+                Console.WriteLine("Enter Course Duration");
+                DurationOfCourse[i]= Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the course fees");
+                CourseFees[i] = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the course id");
+                CourseId[i] = Convert.ToInt32(Console.ReadLine());
+                
+            }
+
+
+            Console.WriteLine("enter the student details");
+            for (i = 0; i < 3; i++)
+            {
+                Console.WriteLine("enter the " + (i + 1) + " student name");
+                StudentName[i] = Console.ReadLine();
+                Console.WriteLine("enter the student id");
+                studentid[i] = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the id of course opted");
+                Console.WriteLine("Enter 1 for " + CourseName[0]);
+                Console.WriteLine("Enter 2 for " + CourseName[1]);
+                Console.WriteLine("Enter 3 for" + CourseName[2]);
+                size = Convert.ToInt32(Console.ReadLine());
+                switch (size)
+                {
+                    case 1:
+                        TotalCost = CourseFees[0];
+                        break;
+                    case 2:
+                        TotalCost = CourseFees[1];
+                        break;
+                    case 3:
+                        TotalCost = CourseFees[2];
+                        break;
+                    default:
+                        Console.WriteLine("invalid input");
+                        break;
+                }
+                StudentCost[i] = TotalCost;
+
+                Console.WriteLine("enter the date of joining");
+                DateOfJoining[i] = Convert.ToDateTime(Console.ReadLine());
+            }
+              Console.WriteLine("displaying the specific details");
+              Console.WriteLine("enter the student id");
+                StudentIdTemp = int.Parse(Console.ReadLine());
+                Console.WriteLine("the student entry list is: ");
+                Console.WriteLine(" ");
+                Console.WriteLine("Student Name".PadRight(20) + "Student ID".PadRight(20) + " DateOfJoining".PadRight(20) + "Coursename".PadRight(20) + "CourseFees");
+
+
+                for (i=0;i<3;i++)
+                {
+                     if (StudentIdTemp== studentid[i])                 
+                        Console.WriteLine(StudentName[i].PadRight(20) + studentid[i] + " ".PadRight(20) + DateOfJoining[i] + " ".PadRight(20) + CourseName[i].PadRight(20) + TotalCost);
+                        Console.ReadLine();
+                    
+                }
+
+
+            
+
+
+            Console.WriteLine(" ");
+            Console.WriteLine(" ");
+            Console.WriteLine("displaying the all details");
+            
+
+            for (i = 0; i < 3; i++)
+            {
+
+                Console.WriteLine("Student Name =" + StudentName[i]);
+                Console.WriteLine("Student Id =" + studentid[i]);
+                Console.WriteLine("Coursename ID =" + size);
+                Console.WriteLine("CourseFees =" + StudentCost[i]);
+                Console.WriteLine("Id 1 for " + CourseName[0]);
+                Console.WriteLine("Id 2 for " + CourseName[1]);
+                Console.WriteLine("Id 3 for" + CourseName[2]);
+
+
+            }
+
+            Console.ReadLine();
+         
+
+
+         }
+
+
+    }
+    
+}
+
+
