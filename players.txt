@@ -1,0 +1,115 @@
+using System;
+
+namespace ConsoleApp5
+{
+    class Team
+    {
+       
+        public Player[] p = new Player[3];
+        public int temp1 = 0, TotalScore = 0;
+        public int[] total = new int[2];
+        float avg1, avg2;
+
+        public void CalcScore(Team t)
+        {
+            if ((p[0].ScoreOfTeamplayer[0] > p[0].ScoreOfTeamplayer[1]) && (p[0].ScoreOfTeamplayer[0] > p[0].ScoreOfTeamplayer[2]))
+            {
+                temp1 = p[0].ScoreOfTeamplayer[0];
+                Console.WriteLine("man of the team of:" + p[0].NameOfTeamplayer[0]);
+                Console.ReadLine();
+            }
+            else if ((p[0].ScoreOfTeamplayer[1] > p[0].ScoreOfTeamplayer[0]) && (p[0].ScoreOfTeamplayer[1] > p[0].ScoreOfTeamplayer[2]))
+            {
+                temp1 = p[0].ScoreOfTeamplayer[1];
+                Console.WriteLine("man of the team is:" + p[0].NameOfTeamplayer[1]);
+                Console.ReadLine();
+            }
+            else
+            {
+                temp1 = p[0].ScoreOfTeamplayer[2];
+                Console.WriteLine("man of the team is:" + p[0].NameOfTeamplayer[2]);
+                Console.ReadLine();
+            }
+            for (int j = 0; j < 2; j++)
+            {
+                for (int i = 0; i < p[j].ScoreOfTeamplayer.Length; i++)
+                {
+                    TotalScore = TotalScore + p[j].ScoreOfTeamplayer[i];
+
+                }
+                total[j] = TotalScore;
+
+            }
+            Console.WriteLine("total score of team is: " + TotalScore);
+            Console.ReadLine();
+        }
+        public void winner()
+        { 
+            if(total[0]>total[1])
+            {
+                Console.WriteLine("winner is team1");
+            }
+            else
+            {
+                Console.WriteLine("winner is team2");
+            }
+            Console.ReadLine();
+
+        }
+        public void avgscore()
+        {
+            avg1 = (total[0]) / 3;
+            Console.WriteLine("avgscore of team1 is:" + avg1);
+            avg2 = (total[1]) / 3;
+            Console.WriteLine("avgcore of team2 is:" + avg2);
+            Console.ReadLine();
+        }
+
+    }
+    class Player
+    {
+       public  string[] NameOfTeamplayer = new string[3];
+       public int[] ScoreOfTeamplayer = new int[3];
+        public int i = 0, j = 0;
+        public void playerDetails(Team pd)
+        {
+            Console.WriteLine("enter the name of players in the team" );
+            for (i = 0; i < 3; i++)
+            {
+                j = i + 1;
+
+                Console.WriteLine("enter the name of player" + j);
+                NameOfTeamplayer[i] = Console.ReadLine();
+                Console.WriteLine("enter the score of player" + j);
+
+                ScoreOfTeamplayer[i] = Convert.ToInt32(Console.ReadLine());
+
+
+            }
+        }
+        
+}
+
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Team t1 = new Team();
+            Player[] p = new Player[3];
+            t1.p[0] = new Player();
+            t1.p[1] = new Player();
+            t1.p[2] = new Player();
+            t1.p[0].playerDetails(t1);
+            t1.CalcScore(t1);
+            Team t2 = new Team();
+            t2.p[0] = new Player();
+            t2.p[1] = new Player();
+            t2.p[2] = new Player();
+            t2.p[0].playerDetails(t2);
+            t2.CalcScore(t2);
+            t1.winner();
+            t1.avgscore();
+        }
+    }
+}

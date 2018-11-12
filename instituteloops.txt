@@ -1,0 +1,130 @@
+using System;
+
+namespace ConsoleApp4
+{
+    class Institute
+    {
+        public Course[] c = new Course[3];
+        public Student[] s = new Student[3];
+        
+       public int StudentIdTemp;
+        public void displayspecific()
+        {
+            Console.WriteLine("displaying the specific details");
+            Console.WriteLine("enter the student id");
+            StudentIdTemp = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("the student entry list is: ");
+            Console.WriteLine(" ");
+            Console.WriteLine("Student Name".PadRight(20) + "Student ID".PadRight(20) + " DateOfJoining".PadRight(20) + "Coursename".PadRight(20) + "CourseFees");
+
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (StudentIdTemp ==s[i].studentid[i])
+                    Console.WriteLine(s[i].StudentName[i].PadRight(20) +s[i].studentid[i] + " ".PadRight(20) + s[i].DateOfJoining[i] + " ".PadRight(20) +c[i].CourseName[i].PadRight(20) + s[i].TotalCost);
+                Console.ReadLine();
+
+            }
+        }
+}
+    class Course
+    {
+        public string[] CourseName = new string[3];
+        public int[] DurationOfCourse = new int[3];
+        public int[] NoOfEnquries = new int[3];
+        public int[] CourseFees = new int[3];
+        public int[] CourseId = new int[3];
+        int i = 0;
+        public void coursedetails()
+        {
+            Console.WriteLine("Enter only 3 courses");
+            for (i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Enter " + (i + 1) + " courses details");
+                Console.WriteLine("Enter Course Name");
+                CourseName[i] = Console.ReadLine();
+
+                Console.WriteLine("Enter Course Duration");
+                DurationOfCourse[i] = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the course fees");
+                CourseFees[i] = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the course id");
+                CourseId[i] = Convert.ToInt32(Console.ReadLine());
+
+            }
+        }
+        
+
+}
+    class Student
+    {
+        public string[] StudentName = new string[3];
+        public int[] studentid = new int[3];
+        public DateTime[] DateOfJoining = new DateTime[3];
+        Course c1 = new Course();
+        public int size = 0, TotalCost = 0;
+
+        public void studentdetails()
+        {
+            Console.WriteLine("enter the student details");
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("enter the " + (i + 1) + " student name");
+                StudentName[i] = Console.ReadLine();
+                Console.WriteLine("enter the student id");
+                studentid[i] = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the id of course opted");
+                Console.WriteLine("Enter 1 for " + c1.CourseName[0]);
+                Console.WriteLine("Enter 2 for " + c1.CourseName[1]);
+                Console.WriteLine("Enter 3 for" + c1.CourseName[2]);
+                size = Convert.ToInt32(Console.ReadLine());
+                switch (size)
+                {
+                    case 1:
+                        TotalCost = c1.CourseFees[0];
+                        break;
+                    case 2:
+                        TotalCost = c1.CourseFees[1];
+                        break;
+                    case 3:
+                        TotalCost = c1.CourseFees[2];
+                        break;
+                    default:
+                        Console.WriteLine("invalid input");
+                        break;
+                }
+
+
+            }
+        }
+
+
+
+
+        class Program
+        {
+
+            static void Main(string[] args)
+            {
+                Institute i = new Institute();
+                Course[] c = new Course[3];
+                Student[] s = new Student[3];
+                i.c[0] = new Course();
+                i.c[1] = new Course();
+                i.c[2] = new Course();
+                i.c[0].coursedetails();
+                i.s[0] = new Student();
+                i.s[1] = new Student();
+                i.s[2] = new Student();
+                i.s[0] = new Student();
+                i.s[0].studentdetails();
+                i.displayspecific();
+
+
+            }
+        }
+    }
+
+
+}
+

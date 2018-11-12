@@ -1,0 +1,167 @@
+using System;
+
+namespace ConsoleApp4
+{
+
+    public class Doctor
+    {
+        public string[] DoctorName = new string[3];
+        public string[] specialization = new string[3];
+        public int[] fees = new int[3];
+        public int i = 0, j = 0;
+        public void doctordetails()
+        {
+            Console.WriteLine(" ");
+            for (i = 0; i < 3; i++)
+            {
+                j = i + 1;
+                Console.WriteLine("Enter the details of doctor" + j);
+                Console.WriteLine("Enter the docotorname");
+                DoctorName[i] = Console.ReadLine();
+                Console.WriteLine("Enter the specialization");
+                specialization[i] = Console.ReadLine();
+
+                Console.WriteLine("Enter the fees of doctor" + j);
+                fees[i] = Convert.ToInt32(Console.ReadLine());
+                Console.ReadLine();
+
+            }
+        }
+        public void displayDoctorDetails()
+        {
+            Console.WriteLine("docorname".PadRight(20) + "doctor specialization".PadRight(20) + "doctor fees".PadRight(20));
+            for (i = 0; i < 3; i++)
+            {
+                Console.WriteLine(DoctorName[i].PadRight(20) + specialization[i].PadRight(20) + fees[i]);
+            }
+
+        }
+
+    }
+    class Patient
+    {
+        public string[] patientName = new string[3];
+        public string[] patientProblem = new string[3];
+        public int i = 0, j = 0;
+        public int[] patientAge = new int[3];
+        public int[] patientID = new int[3];
+        public void patientdetails()
+        {
+            Console.WriteLine(" ");
+            for (i = 0; i < 3; i++)
+            {
+                j = i + 1;
+                Console.WriteLine("Enter the details of patient" + j);
+                Console.WriteLine("Enter the patientname");
+                patientName[i] = Console.ReadLine();
+                Console.WriteLine("Enter the patientproblem");
+                patientProblem[i] = Console.ReadLine();
+
+                Console.WriteLine("Enter the patient age");
+                patientAge[i] = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter the patient ID");
+                patientID[i] = Convert.ToInt32(Console.ReadLine());
+                Console.ReadLine();
+            }
+        }
+
+        public void displayPatientDetails()
+        {
+            Console.WriteLine("patientname".PadRight(20) + "patient problem".PadRight(20) + "Patient Age".PadRight(20) + "patientID");
+            for (i = 0; i < 3; i++)
+            {
+                Console.WriteLine(patientName[i].PadRight(20) + patientProblem[i].PadRight(20) + patientAge[i] + patientID[i]);
+                Console.ReadLine();
+            }
+
+        }
+
+    }
+    class Treatment
+    {
+        public string[] diagnosis = new string[3];
+        public int[] diagnosiscode = new int[3];
+        public void investigation()
+        {
+            int j = 0, i = 0;
+            Console.WriteLine("Enter the Diagnosis Required  and the code");
+
+
+            diagnosis[0] = Console.ReadLine();
+            diagnosiscode[0] = 1;
+            diagnosis[1] = Console.ReadLine();
+            diagnosiscode[1] = 2;
+            diagnosis[2] = Console.ReadLine();
+            diagnosiscode[2] = 3;
+        }
+
+
+    }
+
+
+
+    class Hospital
+    {
+        public Patient[] p = new Patient[3];
+        public Doctor[] d = new Doctor[3];
+        public Treatment[] t = new Treatment[3];
+
+
+        public void Report()
+        {
+            if (t[0].diagnosiscode[0] == 1)
+            {
+                Console.WriteLine("patientname".PadRight(20) + "Patient Age".PadRight(20) + "docorname".PadRight(20) + "doctor fees".PadRight(20));
+                Console.WriteLine(p[0].patientName[0].PadRight(20) + p[0].patientAge[0] + " ".PadRight(20) + d[0].DoctorName[0].PadRight(20) + d[0].fees[0] + " ".PadRight(20));
+
+                Console.ReadLine();
+            }
+            else if (t[0].diagnosiscode[1] == 2)
+            {
+                Console.WriteLine("patientname".PadRight(20) + "Patient Age".PadRight(20) + "docorname".PadRight(20) + "doctor fees".PadRight(20));
+                Console.WriteLine(p[1].patientName[1].PadRight(20) + p[1].patientAge[1] + " ".PadRight(20) + d[1].DoctorName[1].PadRight(20) + d[1].fees[1] + " ".PadRight(20));
+
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("patientname".PadRight(20) + "Patient Age".PadRight(20) + "docorname".PadRight(20) + "doctor fees".PadRight(20));
+                Console.WriteLine(p[2].patientName[2].PadRight(20) + p[2].patientAge[2] + " ".PadRight(20) + d[2].DoctorName[2].PadRight(20) + d[2].fees[2] + " ".PadRight(20));
+                Console.ReadLine();
+
+
+            }
+
+
+        }
+    }
+
+
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Hospital h = new Hospital();
+            Patient[] p = new Patient[3];
+            Doctor[] d = new Doctor[3];
+            Treatment[] t = new Treatment[3];
+
+
+
+            h.p[0] = new Patient();
+            h.p[1] = new Patient();
+            h.p[2] = new Patient();
+            h.p[0].patientdetails();
+            h.p[0].displayPatientDetails();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
